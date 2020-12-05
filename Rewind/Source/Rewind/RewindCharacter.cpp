@@ -45,6 +45,8 @@ ARewindCharacter::ARewindCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	TestBool = false;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -104,6 +106,15 @@ void ARewindCharacter::LookUpAtRate(float Rate)
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
+void ARewindCharacter::TestFunction()
+{
+	if (!TestBool)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Just test once function1"));
+		TestBool = true;
+	}
+}
+
 void ARewindCharacter::MoveForward(float Value)
 {
 	if ((Controller != NULL) && (Value != 0.0f))
@@ -116,6 +127,7 @@ void ARewindCharacter::MoveForward(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		AddMovementInput(Direction, Value);
 	}
+	TestFunction();
 }
 
 void ARewindCharacter::MoveRight(float Value)

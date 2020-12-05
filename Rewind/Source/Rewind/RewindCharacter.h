@@ -34,6 +34,11 @@ protected:
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();
 
+	/*Just once*/
+	bool TestBool;
+
+	void TestFunction();
+
 	/** Called for forwards/backward input */
 	void MoveForward(float Value);
 
